@@ -4,17 +4,18 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
 
-    <changeSet author="Thiago Margonar" id="1">
+    <changeSet author="Thiago Margonar" id="1" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="accounts"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="accounts">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="name" type="VARCHAR(255)"/>
-            <column name="valueAdjusted" type="BIGINT"/>
-            <column name="value" type="BIGINT"/>
-            <column name="expiration" type="datetime"/>
-            <column name="expirationDays" type="INT"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
