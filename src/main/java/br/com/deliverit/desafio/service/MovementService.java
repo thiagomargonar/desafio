@@ -23,6 +23,6 @@ public class AccountsService {
 
     public Accounts pay(Accounts account) {
 
-        return null;
+        return accountsRepository.save(account);
     }
 }
