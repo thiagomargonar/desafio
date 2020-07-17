@@ -2,7 +2,7 @@ package br.com.deliverit.desafio.service.treatment;
 
 import br.com.deliverit.desafio.entity.Accounts;
 import br.com.deliverit.desafio.entity.Movement;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.deliverit.desafio.entity.enuns.RulesENUM;
 
 import java.math.BigDecimal;
 
@@ -10,25 +10,26 @@ public class Rules {
 
     public Movement calculateRules(Accounts accounts){
 
-        br.com.deliverit.desafio.entity.enuns.Rules rulesEnum;
-
+        RulesENUM rulesEnum = null;
         Movement movement = new Movement();
         movement.setName(accounts.getName());
         movement.setPaymentDate(accounts.getPayment());
         movement.setValue(accounts.getValue());
 
-        DatasDiff df = new DatasDiff();
-        movement.setExpiredDay(df.dataDiff(accounts.getPayment(), accounts.getExpired()));
+        movement.setExpiredDay(new DatasDiff().dataDiff(accounts.getPayment(), accounts.getExpired()));
 
         if(movement.getExpiredDay() > 0 && movement.getExpiredDay() <=3){
             movement.setValueAdjusted(rulesOne(movement.getValue(),movement.getExpiredDay()));
-            movement.setRules(rulesENUM.
+            movement.setRules(rulesEnum.ONE);
         }else if(movement.getExpiredDay() > 3 && movement.getExpiredDay() <=5){
-
+            movement.setValueAdjusted(rulesTwo(movement.getValue(),movement.getExpiredDay()));
+            movement.setRules(rulesEnum.TWO);
         }else if (movement.getExpiredDay() > 5){
-
+            movement.setValueAdjusted(rulesThree(movement.getValue(),movement.getExpiredDay()));
+            movement.setRules(rulesEnum.THREE);
         }else{
             movement.setValueAdjusted(movement.getValue());
+            movement.setRules(rulesEnum.ZERO);
         }
 
         return movement;

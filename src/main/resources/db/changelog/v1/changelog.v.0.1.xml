@@ -7,15 +7,20 @@
     <changeSet author="Thiago Margonar" id="1" >
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="accounts"/>
+                <tableExists tableName="movement"/>
             </not>
         </preConditions>
 
-        <createTable tableName="accounts">
+        <createTable tableName="movement">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
 
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="value" type="BIGINT"/>
+            <column name="valueAdjusted" type="BIGINT"/>
+            <column name="expiredDay" type="NUMERIC(3)"/>
+            <column name="paymentDate" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
