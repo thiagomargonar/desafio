@@ -20,23 +20,26 @@ public class Movement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
+    @NotNull(message = "Nome nao pode estar em branco")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Valor nao pode estar em branco")
     private BigDecimal value;
 
-    @NotNull
+    @NotNull(message = "Valor Ajustado nao pode estar em branco")
+    @Column(name = "valueAdjusted")
     private BigDecimal valueAdjusted;
 
-    @NotNull
+    @NotNull(message = "Validade nao pode estar em branco")
+    @Column(name = "expiredDay")
     private Long expiredDay;
 
-    @NotNull
+    @NotNull(message = "data de pagamento nao pode estar em branco")
     @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "paymentDate")
     private Date paymentDate;
 
-    @NotNull
+    @NotNull(message = "Regra nao pode estar em branco")
     @JsonIgnore
     @Enumerated
     private RulesENUM rules;

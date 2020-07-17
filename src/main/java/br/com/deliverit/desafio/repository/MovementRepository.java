@@ -1,6 +1,5 @@
 package br.com.deliverit.desafio.repository;
 
-import br.com.deliverit.desafio.entity.Accounts;
 import br.com.deliverit.desafio.entity.Movement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
