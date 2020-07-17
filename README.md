@@ -10,3 +10,5 @@ http://127.0.0.1:8080/accounts/</br>
     "payment": dd-MM-yyyy </br>
 }
 
+GET </br>
+http://127.0.0.1:8080/accounts/</br>
