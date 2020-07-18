@@ -11,11 +11,10 @@ public class DatasDiff {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         df.setLenient(false);
         Date d1 = dataLow;
-        System.out.println (d1);
         Date d2 = dataHigh;
-        System.out.println (d2);
-        long dt = (d2.getTime() - d1.getTime()) + 3600000;
-        return ((dt / 86400000L)*-1);
+        long dt = (d1.getTime() - d2.getTime()) + 3600000;
+        System.out.println((dt / 86400000L));
+        return ((dt / 86400000L));
     }
 
 }
