@@ -27,16 +27,13 @@ public class Movement implements Serializable {
     private BigDecimal value;
 
     @NotNull(message = "Valor Ajustado nao pode estar em branco")
-    @Column(name = "valueAdjusted")
     private BigDecimal valueAdjusted;
 
     @NotNull(message = "Validade nao pode estar em branco")
-    @Column(name = "expiredDay")
     private Long expiredDay;
 
     @NotNull(message = "data de pagamento nao pode estar em branco")
     @JsonFormat(pattern = "dd-MM-yyyy")
-    @Column(name = "paymentDate")
     private Date paymentDate;
 
     @NotNull(message = "Regra nao pode estar em branco")
